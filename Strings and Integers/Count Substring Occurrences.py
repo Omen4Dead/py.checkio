@@ -1,10 +1,17 @@
 def count_occurrences(main_str: str, sub_str: str) -> int:
     # your code here
-    return 0
+    main_str = main_str.lower()
+    sub_str = sub_str.lower()
+    res = 0
+    for i in range(len(main_str)):
+        # print(main_str[i:len(sub_str)+i], ' - ', i)
+        if main_str[i:len(sub_str)+i] == sub_str:
+            res += 1
+        # print('res = ', res)
+    return res
 
 
 print("Example:")
-print(count_occurrences("hello world hello", "hello"))
 
 # These "asserts" are used for self-checking
 assert count_occurrences("hello world hello", "hello") == 2
