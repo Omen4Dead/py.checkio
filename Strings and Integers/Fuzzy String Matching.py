@@ -1,7 +1,12 @@
 def fuzzy_string_match(str1: str, str2: str, threshold: int) -> bool:
     # your code here
-    
-    return False
+    cnt_changes = 0
+    min_len = min(len(str1), len(str2))
+    for i in range(min_len):
+        if str1[i] != str2[i]:
+            cnt_changes += 1
+    cnt_changes += abs(len(str1) - len(str2))
+    return cnt_changes == threshold
 
 
 print("Example:")
