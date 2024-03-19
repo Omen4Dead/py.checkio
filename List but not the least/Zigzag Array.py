@@ -2,9 +2,13 @@ def create_zigzag(rows: int, cols: int, start: int = 1) -> list[list[int]]:
     # your code here
     numbers = list(range(start, rows*cols + start))
     zig = []
-    while len(numbers) > 0:
-        zig.append(numbers[:cols])
-        numbers = numbers[cols:]
+    if len(numbers) == 0:
+        for i in range(rows):
+            zig.append([])
+    else:
+        while len(numbers) > 0:
+            zig.append(numbers[:cols])
+            numbers = numbers[cols:]
     zag = []
     for idx, val in enumerate(zig):
         if idx % 2 == 0:
@@ -15,7 +19,7 @@ def create_zigzag(rows: int, cols: int, start: int = 1) -> list[list[int]]:
 
 
 print("Example:")
-print(create_zigzag(3, 3, 5))
+print(create_zigzag(3, 0))
 
 # These "asserts" are used for self-checking
 assert create_zigzag(3, 5) == [[1, 2, 3, 4, 5], [10, 9, 8, 7, 6], [11, 12, 13, 14, 15]]
